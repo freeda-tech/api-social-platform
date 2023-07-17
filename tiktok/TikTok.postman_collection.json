@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "de18b5ae-6c4a-421a-905f-f36219a496c9",
+		"name": "TikTok",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetAccessToken",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://open-api.tiktok.com/oauth/access_token/?client_key={{client_key}}&client_secret={{client_secret}}&code=&grant_type=authorization_code",
+					"protocol": "https",
+					"host": [
+						"open-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"access_token",
+						""
+					],
+					"query": [
+						{
+							"key": "client_key",
+							"value": "{{client_key}}"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}"
+						},
+						{
+							"key": "code",
+							"value": ""
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorize",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.tiktok.com/auth/authorize/?client_key={{client_key}}&response_type=code&scope={{scope}}&redirect_uri={{redirect_uri}}&state={{state}}",
+					"protocol": "https",
+					"host": [
+						"www",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"auth",
+						"authorize",
+						""
+					],
+					"query": [
+						{
+							"key": "client_key",
+							"value": "{{client_key}}"
+						},
+						{
+							"key": "response_type",
+							"value": "code"
+						},
+						{
+							"key": "scope",
+							"value": "{{scope}}"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "{{redirect_uri}}"
+						},
+						{
+							"key": "state",
+							"value": "{{state}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UserInfo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://open.tiktokapis.com/v2/user/info/?fields=open_id,follower_count, following_count,likes_count, union_id, display_name",
+					"protocol": "https",
+					"host": [
+						"open",
+						"tiktokapis",
+						"com"
+					],
+					"path": [
+						"v2",
+						"user",
+						"info",
+						""
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "fields",
+							"value": "open_id,follower_count, following_count,likes_count, union_id, display_name"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VideoList",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "act.b891bba4a70f637b64cdff6bfa39bf5bZBi8p3LMYWHKwI24vkq7wjg177Cb!5204",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"max_count\": 10, \"cursor\":\"1666615081000\"}"
+				},
+				"url": {
+					"raw": "https://open.tiktokapis.com/v2/video/list/?fields=id,title,create_time,status",
+					"protocol": "https",
+					"host": [
+						"open",
+						"tiktokapis",
+						"com"
+					],
+					"path": [
+						"v2",
+						"video",
+						"list",
+						""
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "id,title,create_time,status"
+						},
+						{
+							"key": "cursor",
+							"value": "1669128905000",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QueryVideo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"filters\": {\n\"video_ids\":[\n\"ZMFpgcfyb\"\n]\n}}"
+				},
+				"url": {
+					"raw": "https://open.tiktokapis.com/v2/video/query/?fields=id, create_time, cover_image_url, share_url, video_description, duration, height, width, title, like_count, comment_count, share_count, view_count, format",
+					"protocol": "https",
+					"host": [
+						"open",
+						"tiktokapis",
+						"com"
+					],
+					"path": [
+						"v2",
+						"video",
+						"query",
+						""
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "id, create_time, cover_image_url, share_url, video_description, duration, height, width, title, like_count, comment_count, share_count, view_count, format"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RefreshToken",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://open-api.tiktok.com/oauth/refresh_token/?client_key={{client_key}}&grant_type=refresh_token&refresh_token={{refresh_token}}",
+					"protocol": "https",
+					"host": [
+						"open-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"refresh_token",
+						""
+					],
+					"query": [
+						{
+							"key": "client_key",
+							"value": "{{client_key}}"
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token"
+						},
+						{
+							"key": "refresh_token",
+							"value": "{{refresh_token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

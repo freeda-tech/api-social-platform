@@ -1,0 +1,11 @@
+ContentList:
+https://graph.facebook.com/{publisher_id}/posts?fields=message,attachments{unshimmed_url,media_type,title,target{id}},permalink_url,created_time,id,full_picture,from,properties&access_token={access_token}
+
+ContentData:
+https://graph.facebook.com/{publisher_id}_{content_id}?fields=message,attachments{unshimmed_url,media_type,title,media},permalink_url,created_time,id,full_picture,from,comments.limit(0).summary(true).filter(stream).as(total_comments_with_replies),comments.limit(0).summary(true),shares,reactions.limit(0).summary(true).as(reactions_count),reactions.type(LIKE).limit(0).summary(true).as(reactions_like_count),reactions.type(LOVE).limit(0).summary(true).as(reactions_love_count),reactions.type(WOW).limit(0).summary(true).as(reactions_wow_count),reactions.type(HAHA).limit(0).summary(true).as(reactions_haha_count),reactions.type(SAD).limit(0).summary(true).as(reactions_sad_count),reactions.type(ANGRY).limit(0).summary(true).as(reactions_angry_count)&access_token={access_token}
+
+Followers:
+https://graph.facebook.com/{publisher_id}?access_token={access_token}&fields=followers_count,fan_count,about
+
+Reels:
+https://graph.facebook.com/{publisher_id}/video_reels?fields=message,attachments{unshimmed_url,media_type,type,title,target{id}},permalink_url,created_time,id,full_picture,from,properties&access_token={access_token}

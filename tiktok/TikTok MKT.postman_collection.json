@@ -1,0 +1,999 @@
+{
+	"info": {
+		"_postman_id": "89c40287-bd1c-4c81-9932-7f02deb2f641",
+		"name": "TikTok MKT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3839565"
+	},
+	"item": [
+		{
+			"name": "ad",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/{{apiVersion}}/ad/get/?advertiser_id={{advertiser_id}}&fields=[\"ad_name\",\"adgroup_id\",\"campaign_id\",\"ad_id\",\"operation_status\",\"create_time\",\"secondary_status\"]&page=1&page_size=1000",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"{{apiVersion}}",
+						"ad",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "fields",
+							"value": "[\"ad_name\",\"adgroup_id\",\"campaign_id\",\"ad_id\",\"operation_status\",\"create_time\",\"secondary_status\"]"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "filtering",
+							"value": "{\"creation_filter_start_time\": \"2022-06-22 00:00:00\"}",
+							"disabled": true
+						},
+						{
+							"key": "page_size",
+							"value": "1000"
+						},
+						{
+							"key": "filtering",
+							"value": "{\"primary_status\": \"STATUS_ALL\",\"ad_ids\":[\"1753567471071250\"]}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "adGroup",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/{{apiVersion}}/adgroup/get/?advertiser_id={{advertiser_id}}&fields=[\"adgroup_id\",\"campaign_id\",\"operation_status\",\"create_time\",\"secondary_status\"]&page=1&page_size=1000&filtering={\"primary_status\": \"STATUS_ALL\"}",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"{{apiVersion}}",
+						"adgroup",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "fields",
+							"value": "[\"adgroup_id\",\"campaign_id\",\"operation_status\",\"create_time\",\"secondary_status\"]"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "1000"
+						},
+						{
+							"key": "filtering",
+							"value": "{\"primary_status\": \"STATUS_ALL\"}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "campaign",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/{{apiVersion}}/campaign/get/?advertiser_id={{advertiser_id}}&fields=[\"campaign_id\",\"campaign_name\",\"advertiser_id\",\"operation_status\",\"create_time\",\"secondary_status\"]&page=1&page_size=1000&filtering={\"primary_status\":\"STATUS_ALL\"}",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"{{apiVersion}}",
+						"campaign",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "fields",
+							"value": "[\"campaign_id\",\"campaign_name\",\"advertiser_id\",\"operation_status\",\"create_time\",\"secondary_status\"]"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "1000"
+						},
+						{
+							"key": "query_mode",
+							"value": "CHUNK",
+							"disabled": true
+						},
+						{
+							"key": "filtering",
+							"value": "{\"campaign_ids\":[\"1717120580925457\"]}",
+							"disabled": true
+						},
+						{
+							"key": "filtering",
+							"value": "{\"primary_status\":\"STATUS_ALL\"}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BASIC report Ad",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Access-Token",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/report/integrated/get/?advertiser_id={{advertiser_id}}&report_type=BASIC&dimensions=[\"ad_id\",\"stat_time_day\"]&metrics=[\"ad_name\",\"ad_text\",\"campaign_id\",\"adgroup_id\",\"objective_type\",\"smart_target\",\"tt_app_id\",\"tt_app_name\",\"currency\",\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"reach\",\"clicks\",\"campaign_budget\",\"engagements\",\"engagement_rate\",\"cost_per_1000_reached\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"frequency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play_per_user\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\",\"engaged_view\",\"interactive_add_on_impressions\",\"clicks_on_hashtag_challenge\",\"duet_clicks\",\"stitch_clicks\",\"sound_usage_clicks\",\"placement_type\",\"budget\"]&data_level=AUCTION_AD&start_date=2023-01-16&end_date=2023-01-16&page=1&filtering=[{\"field_name\": \"ad_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{ad_id}}]\"}]",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"report",
+						"integrated",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "report_type",
+							"value": "BASIC"
+						},
+						{
+							"key": "dimensions",
+							"value": "[\"ad_id\",\"stat_time_day\"]"
+						},
+						{
+							"key": "metrics",
+							"value": "[\"ad_name\",\"ad_text\",\"campaign_id\",\"adgroup_id\",\"objective_type\",\"smart_target\",\"tt_app_id\",\"tt_app_name\",\"currency\",\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"reach\",\"clicks\",\"campaign_budget\",\"engagements\",\"engagement_rate\",\"cost_per_1000_reached\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"frequency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play_per_user\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\",\"engaged_view\",\"interactive_add_on_impressions\",\"clicks_on_hashtag_challenge\",\"duet_clicks\",\"stitch_clicks\",\"sound_usage_clicks\",\"placement_type\",\"budget\"]"
+						},
+						{
+							"key": "lifetime",
+							"value": "false",
+							"disabled": true
+						},
+						{
+							"key": "data_level",
+							"value": "AUCTION_AD"
+						},
+						{
+							"key": "start_date",
+							"value": "2023-01-16"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-01-16"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "30",
+							"disabled": true
+						},
+						{
+							"key": "sort_field",
+							"value": "START_TIME",
+							"disabled": true
+						},
+						{
+							"key": "filtering",
+							"value": "[{\"field_name\": \"ad_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{ad_id}}]\"}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BASIC report AdGroup",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/report/integrated/get/?advertiser_id={{advertiser_id}}&report_type=BASIC&dimensions=[\"adgroup_id\",\"stat_time_day\"]&metrics=[\"adgroup_name\",\"campaign_id\",\"objective_type\",\"smart_target\",\"tt_app_id\",\"tt_app_name\",\"currency\",\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"reach\",\"clicks\",\"campaign_budget\",\"engagements\",\"engagement_rate\",\"cost_per_1000_reached\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"frequency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play_per_user\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\",\"engaged_view\",\"interactive_add_on_impressions\",\"clicks_on_hashtag_challenge\",\"duet_clicks\",\"stitch_clicks\",\"sound_usage_clicks\",\"placement_type\",\"budget\"]&data_level=AUCTION_ADGROUP&start_date=2023-01-18&end_date=2023-01-18&page=1&filtering=[{\"field_name\": \"adgroup_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{adgroup_id}}]\"}]",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"report",
+						"integrated",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "report_type",
+							"value": "BASIC"
+						},
+						{
+							"key": "dimensions",
+							"value": "[\"adgroup_id\",\"stat_time_day\"]"
+						},
+						{
+							"key": "metrics",
+							"value": "[\"adgroup_name\",\"campaign_id\",\"objective_type\",\"smart_target\",\"tt_app_id\",\"tt_app_name\",\"currency\",\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"reach\",\"clicks\",\"campaign_budget\",\"engagements\",\"engagement_rate\",\"cost_per_1000_reached\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"frequency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play_per_user\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\",\"engaged_view\",\"interactive_add_on_impressions\",\"clicks_on_hashtag_challenge\",\"duet_clicks\",\"stitch_clicks\",\"sound_usage_clicks\",\"placement_type\",\"budget\"]"
+						},
+						{
+							"key": "data_level",
+							"value": "AUCTION_ADGROUP"
+						},
+						{
+							"key": "start_date",
+							"value": "2023-01-18"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-01-18"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "filtering",
+							"value": "[{\"field_name\": \"adgroup_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{adgroup_id}}]\"}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "BASIC report Campaign",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/report/integrated/get/?advertiser_id={{advertiser_id}}&report_type=BASIC&dimensions=[\"campaign_id\",\"stat_time_day\"]&metrics=[\"campaign_name\",\"objective_type\",\"currency\",\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"reach\",\"clicks\",\"campaign_budget\",\"engagements\",\"engagement_rate\",\"cost_per_1000_reached\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"frequency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play_per_user\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\",\"engaged_view\",\"interactive_add_on_impressions\",\"clicks_on_hashtag_challenge\",\"duet_clicks\",\"stitch_clicks\",\"sound_usage_clicks\"]&data_level=AUCTION_CAMPAIGN&start_date=2022-12-17&end_date=2023-01-16&page=1&filtering=[{\"field_name\": \"campaign_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{campaign_id}}]\"}]",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"report",
+						"integrated",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "report_type",
+							"value": "BASIC"
+						},
+						{
+							"key": "dimensions",
+							"value": "[\"campaign_id\",\"stat_time_day\"]"
+						},
+						{
+							"key": "metrics",
+							"value": "[\"campaign_name\",\"objective_type\",\"currency\",\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"reach\",\"clicks\",\"campaign_budget\",\"engagements\",\"engagement_rate\",\"cost_per_1000_reached\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"frequency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play_per_user\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\",\"engaged_view\",\"interactive_add_on_impressions\",\"clicks_on_hashtag_challenge\",\"duet_clicks\",\"stitch_clicks\",\"sound_usage_clicks\"]"
+						},
+						{
+							"key": "data_level",
+							"value": "AUCTION_CAMPAIGN"
+						},
+						{
+							"key": "start_date",
+							"value": "2022-12-17"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-01-16"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "filtering",
+							"value": "[{\"field_name\": \"campaign_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{campaign_id}}]\"}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUDIENCE report Ad",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/report/integrated/get/?advertiser_id={{advertiser_id}}&report_type=AUDIENCE&data_level=AUCTION_AD&dimensions=[\"gender\",\"age\"]&metrics=[\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"clicks\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"currency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play\",\"average_video_play_per_user\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\"]&start_date=2022-12-29&end_date=2023-01-13&page=1&page_size=30&sort_field=START_TIME&filters=[{\"field_name\": \"ad_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{contentId}}]\"}]",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"report",
+						"integrated",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "report_type",
+							"value": "AUDIENCE"
+						},
+						{
+							"key": "data_level",
+							"value": "AUCTION_AD"
+						},
+						{
+							"key": "dimensions",
+							"value": "[\"gender\",\"age\"]"
+						},
+						{
+							"key": "metrics",
+							"value": "[\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"clicks\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"currency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play\",\"average_video_play_per_user\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\"]"
+						},
+						{
+							"key": "start_date",
+							"value": "2022-12-29"
+						},
+						{
+							"key": "end_date",
+							"value": "2023-01-13"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "30"
+						},
+						{
+							"key": "sort_field",
+							"value": "START_TIME"
+						},
+						{
+							"key": "filters",
+							"value": "[{\"field_name\": \"ad_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{contentId}}]\"}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUDIENCE report AdGroup",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/report/integrated/get/?advertiser_id={{advertiser_id}}&report_type=AUDIENCE&data_level=AUCTION_ADGROUP&dimensions=[\"province_id\"]&metrics=[\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"clicks\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"currency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\"]&start_date=2022-12-29&end_date=2022-12-29&page=1&page_size=30&sort_field=START_TIME&filtering=[{\"field_name\": \"adgroup_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{adgroup_id}}]\"}]",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"report",
+						"integrated",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "report_type",
+							"value": "AUDIENCE"
+						},
+						{
+							"key": "data_level",
+							"value": "AUCTION_ADGROUP"
+						},
+						{
+							"key": "dimensions",
+							"value": "[\"province_id\"]"
+						},
+						{
+							"key": "metrics",
+							"value": "[\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"clicks\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"currency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\"]"
+						},
+						{
+							"key": "start_date",
+							"value": "2022-12-29"
+						},
+						{
+							"key": "end_date",
+							"value": "2022-12-29"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "30"
+						},
+						{
+							"key": "sort_field",
+							"value": "START_TIME"
+						},
+						{
+							"key": "filtering",
+							"value": "[{\"field_name\": \"adgroup_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{adgroup_id}}]\"}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AUDIENCE report Campaign",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/report/integrated/get/?advertiser_id={{advertiser_id}}&report_type=AUDIENCE&data_level=AUCTION_CAMPAIGN&dimensions=[\"province_id\"]&metrics=[\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"clicks\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"currency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"follows\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\"]&start_date=2022-12-29&end_date=2022-12-29&page=1&page_size=30&sort_field=START_TIME&filtering=[{\"field_name\": \"campaign_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{campaign_id}}]\"}]",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"report",
+						"integrated",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "report_type",
+							"value": "AUDIENCE"
+						},
+						{
+							"key": "data_level",
+							"value": "AUCTION_CAMPAIGN"
+						},
+						{
+							"key": "dimensions",
+							"value": "[\"province_id\"]"
+						},
+						{
+							"key": "metrics",
+							"value": "[\"impressions\",\"average_video_play\",\"follows\",\"spend\",\"cpc\",\"cpm\",\"ctr\",\"clicks\",\"conversion\",\"cost_per_conversion\",\"conversion_rate\",\"real_time_conversion\",\"result\",\"cost_per_result\",\"result_rate\",\"real_time_result\",\"currency\",\"profile_visits\",\"profile_visits_rate\",\"likes\",\"comments\",\"shares\",\"follows\",\"clicks_on_music_disc\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play\",\"video_views_p25\",\"video_views_p50\",\"video_views_p100\"]"
+						},
+						{
+							"key": "start_date",
+							"value": "2022-12-29"
+						},
+						{
+							"key": "end_date",
+							"value": "2022-12-29"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "30"
+						},
+						{
+							"key": "sort_field",
+							"value": "START_TIME"
+						},
+						{
+							"key": "filtering",
+							"value": "[{\"field_name\": \"campaign_ids\", \"filter_type\": \"IN\", \"filter_value\": \"[{{campaign_id}}]\"}]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ads by advertiser_id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/ad/get/?advertiser_id={{advertiser_id}}&fields=[\"ad_id\",\"tiktok_item_id\",\"ad_format\",\"create_time\",\"operation_status\", \"secondary_status\",\"modify_time\"]&page=1&creation_filter_start_time=2022-11-10&secondary_status=AD_STATUS_DONE",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"ad",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "fields",
+							"value": "[\"ad_id\",\"tiktok_item_id\",\"ad_format\",\"create_time\",\"operation_status\", \"secondary_status\",\"modify_time\"]"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "creation_filter_start_time",
+							"value": "2022-11-10"
+						},
+						{
+							"key": "secondary_status",
+							"value": "AD_STATUS_DONE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Advertiser on Campign",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/campaign/get/?advertiser_id={{advertiser_id}}",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"campaign",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Video Performance Report",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Access-Token",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/report/video_performance/get/?advertiser_id={{advertiser_id}}&dimensions=[\"LOCATION\"]&filtering=[]&sort_field=CREATE_TIME&sort_type=ASC&page=1&page_size=10&metrics_fields=[\"view_count\"]",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"report",
+						"video_performance",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "dimensions",
+							"value": "[\"LOCATION\"]"
+						},
+						{
+							"key": "filtering",
+							"value": "[]"
+						},
+						{
+							"key": "sort_field",
+							"value": "CREATE_TIME"
+						},
+						{
+							"key": "sort_type",
+							"value": "ASC"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "page_size",
+							"value": "10"
+						},
+						{
+							"key": "metrics_fields",
+							"value": "[\"view_count\"]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Advertiser on adgroup",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Access-Token",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/adgroup/get/?advertiser_id={{advertiser_id}}",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"adgroup",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Campaign Report",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Access-Token",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.2/reports/integrated/get/?advertiser_id={{advertiser_id}}&report_type=BASIC&dimensions=[\"campaign_id\", \"stat_time_day\"] &metrics={{metrics}}&lifetime=false&data_level=AUCTION_CAMPAIGN&start_date=2022-10-01&end_date=2022-10-31",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.2",
+						"reports",
+						"integrated",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "report_type",
+							"value": "BASIC"
+						},
+						{
+							"key": "dimensions",
+							"value": "[\"campaign_id\", \"stat_time_day\"] "
+						},
+						{
+							"key": "metrics",
+							"value": "{{metrics}}"
+						},
+						{
+							"key": "lifetime",
+							"value": "false"
+						},
+						{
+							"key": "data_level",
+							"value": "AUCTION_CAMPAIGN"
+						},
+						{
+							"key": "start_date",
+							"value": "2022-10-01"
+						},
+						{
+							"key": "end_date",
+							"value": "2022-10-31"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorization by auth_code",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"secret\": \"ebf0d62578c273ae8de3fa7586b641d3cc9b1984\", \n\"app_id\": \"7161756464392994817\", \n\"auth_code\": \"fcaacfb8d295528f5e72574d8db06fab11970ce5\"\n}"
+				},
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/oauth2/access_token/",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"oauth2",
+						"access_token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AdGroup report",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Access-Token",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://business-api.tiktok.com/open_api/v1.3/reports/integrated/get/?advertiser_id={{advertiser_id}}&report_type=BASIC&dimensions=[\"adgroup_id\", \"stat_time_day\"]&metrics=[\"campaign_name\",\"campaign_id\",\"adgroup_name\",\"likes\",\"comments\",\"shares\",\"follows\",\"spend\", \"impressions\",\"cpc\",\"cpm\",\"ctr\",\"reach\",\"clicks\",\"conversion_rate\",\"video_play_actions\",\"conversion\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play\",\"average_video_play_per_user\",\"video_views_p25\",\"video_views_p50\",\"video_views_p75\",\"video_views_p100\"]&lifetime=false&data_level=AUCTION_ADGROUP&start_date=2022-01-10&end_date=2022-02-03",
+					"protocol": "https",
+					"host": [
+						"business-api",
+						"tiktok",
+						"com"
+					],
+					"path": [
+						"open_api",
+						"v1.3",
+						"reports",
+						"integrated",
+						"get",
+						""
+					],
+					"query": [
+						{
+							"key": "advertiser_id",
+							"value": "{{advertiser_id}}"
+						},
+						{
+							"key": "report_type",
+							"value": "BASIC"
+						},
+						{
+							"key": "dimensions",
+							"value": "[\"adgroup_id\", \"stat_time_day\"]"
+						},
+						{
+							"key": "metrics",
+							"value": "[\"campaign_name\",\"campaign_id\",\"adgroup_name\",\"likes\",\"comments\",\"shares\",\"follows\",\"spend\", \"impressions\",\"cpc\",\"cpm\",\"ctr\",\"reach\",\"clicks\",\"conversion_rate\",\"video_play_actions\",\"conversion\",\"video_play_actions\",\"video_watched_2s\",\"video_watched_6s\",\"average_video_play\",\"average_video_play_per_user\",\"video_views_p25\",\"video_views_p50\",\"video_views_p75\",\"video_views_p100\"]"
+						},
+						{
+							"key": "lifetime",
+							"value": "false"
+						},
+						{
+							"key": "data_level",
+							"value": "AUCTION_ADGROUP"
+						},
+						{
+							"key": "start_date",
+							"value": "2022-01-10"
+						},
+						{
+							"key": "end_date",
+							"value": "2022-02-03"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

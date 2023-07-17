@@ -1,0 +1,15 @@
+ContentList:
+https://graph.facebook.com/v16.0/{publisher_id}/media?fields=id,timestamp,owner,ig_id,media_type,caption,permalink,media_product_type,video_length,like_count&access_token={access_token}
+
+ContentData:
+https://graph.facebook.com/{{vApi}}/{publisher_id}?fields=id,ig_id,media_type,like_count,comments_count,timestamp,permalink,media_product_type,caption&access_token={access_token}
+
+Insights:
+https://graph.facebook.com/v14.0/{content_id}?fields=id,insights.metric(engagement,impressions,reach,saved)&access_token={access_token}
+
+Get # ID:
+https://graph.facebook.com/v15.0/ig_hashtag_search?user_id={user_id}&q={hashtag_to_query}&access_token={access_token}
+
+Top media by #:
+https://graph.facebook.com/{hashtag_id}/top_media?user_id={user_id}&fields=id,media_type,comments_count,like_count,caption,permalink,media_url,timestamp&limit=30
+in più: --header 'Authorization: Bearer {access_token}'

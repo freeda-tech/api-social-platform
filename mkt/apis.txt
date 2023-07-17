@@ -1,0 +1,10 @@
+List of Ads given PublisherId:
+https://graph.facebook.com/v16.0/{publisher_id}/ads?fields=name,created_time,updated_time,campaign,adset,effective_status,status,configured_status,category,description,title&access_token={access_token}
+
+
+ContentData:
+https://graph.facebook.com/v15.0/{content_id}?access_token={access_token}&fields=id,name,account_id,campaign_id,created_time,updated_time,status,bid_amount
+
+
+Insights:
+https://graph.facebook.com/v15.0/{content_id}/insights?fields=reach,impressions,cpc,clicks,campaign_name,campaign_id,account_name,adset_name,inline_link_clicks,full_view_impressions,updated_time,spend,frequency,place_page_name&access_token={access_token}&breakdowns=[{breakdown1},{breakdown2}]
